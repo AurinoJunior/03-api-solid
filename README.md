@@ -27,8 +27,16 @@ Projeto 03 do bootcamp ignite nodejs da rocketseat, GymPass style app.
 
 - Node
 - Typescript
+- Prisma ORM
+- Docker
 
 ## :video_game: Iniciando o projeto
+
+1. clone o repositorio
+2. Rode as dependencias `yarn install`
+3. Clone a .env.example para um arquivo `.env`
+4. Subo o banco de dados `docker-compose up`
+5. Rode as migrations `npx prisma migrate dev`
 
 ## :beers: Como usar
 

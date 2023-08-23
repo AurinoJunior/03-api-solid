@@ -6,6 +6,9 @@
   "author": "Aurino Geraldo <aurinoaj@gmail.com>",
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">= 18"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.cjs",
