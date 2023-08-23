@@ -1,0 +1,28 @@
+{
+  "name": "api-solid_course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AurinoJunior/api-solid_course.git",
+  "author": "Aurino Geraldo <aurinoaj@gmail.com>",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "node build/server.cjs",
+    "build": "tsup src --out-dir build",
+    "bump": "yarn upgrade-interactive"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "2.1.0",
+    "@types/node": "20.5.3",
+    "eslint": "8.47.0",
+    "tsup": "7.2.0",
+    "tsx": "3.12.7",
+    "typescript": "5.1.6"
+  },
+  "dependencies": {
+    "dotenv": "16.3.1",
+    "fastify": "4.21.0",
+    "zod": "3.22.2"
+  }
+}
