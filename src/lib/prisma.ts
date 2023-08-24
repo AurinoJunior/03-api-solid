@@ -1,10 +1,11 @@
 import { env } from '@/env'
-import { PrismaClient, Prisma } from '@prisma/client'
+import { PrismaClient, Prisma, User } from '@prisma/client'
 
 const prisma = new PrismaClient({
   log: env.NODE_ENV === 'dev' ? ['query'] : [],
 })
 
-type UserCreateInput = Prisma.UserCreateInput
+type TUserCreateInput = Prisma.UserCreateInput
+type TUser = User
 
-export { prisma, UserCreateInput }
+export { prisma, TUserCreateInput, TUser }
