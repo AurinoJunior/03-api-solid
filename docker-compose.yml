@@ -10,9 +10,30 @@ services:
       - POSTGRESQL_PASSWORD=dev123
       - POSTGRESQL_DATABASE=apisolid
     volumes:
-      - 'postgresql_data:/bitnami/postgresql'
-    container_name: api-solid_db
+      - postgresql_data:/bitnami/postgresql
+    container_name: postgres_db
+    networks:
+      - app_network
+
+  node:
+    build:
+      context: .
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    container_name: node_api
+    command: yarn dev
+    env_file: .env
+    networks:
+      - app_network
 
 volumes:
   postgresql_data:
-    driver: local
+
+networks:
+  app_network:
+    driver: bridge

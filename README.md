@@ -32,11 +32,22 @@ Projeto 03 do bootcamp ignite nodejs da rocketseat, GymPass style app.
 
 ## :video_game: Iniciando o projeto
 
-1. clone o repositorio
-2. Rode as dependencias `yarn install`
-3. Clone a .env.example para um arquivo `.env`
-4. Subo o banco de dados `docker-compose up`
-5. Rode as migrations `npx prisma migrate dev`
+Rodando com docker
+
+1. Clone a .env.example para um arquivo `cp .env.example .env`
+2. Subo os serviços com docker `docker-compose up`
+3. Acesse a cli do docker para rodar as migrations `docker exec -it node_api bash`
+4. Rode as migrations dentro do container `npx prisma migrate dev` saia da cli com ctrl + d
+5. A aplicação ficará disponivel em `http://localhost:3333`
+
+Rodando com api local
+
+1. Clone a .env.example para um arquivo `cp .env.example .env`
+2. Instale as dependencias `yarn install`
+3. Suba o banco de dados `docker-compose up db`
+4. Rode as migrations `npx prisma migrate dev`
+5. Suba a aplicação `yarn dev`
+6. A aplicação ficará disponivel em `http://localhost:3333`
 
 ## :beers: Como usar
 
