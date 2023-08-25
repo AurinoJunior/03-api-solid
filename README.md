@@ -16,7 +16,6 @@
 - [Contexto](#blue_book-contexto)
 - [Tecnologias](#computer-tecnologias)
 - [Iniciando o projeto](#video_game-iniciando-o-projeto)
-- [Como usar](#beers-como-usar)
 - [Requisitos](#requisitos)
 
 ## :blue_book: Contexto
@@ -43,13 +42,12 @@ Rodando com docker
 Rodando com api local
 
 1. Clone a .env.example para um arquivo `cp .env.example .env`
-2. Instale as dependencias `yarn install`
-3. Suba o banco de dados `docker-compose up db`
-4. Rode as migrations `npx prisma migrate dev`
-5. Suba a aplicação `yarn dev`
-6. A aplicação ficará disponivel em `http://localhost:3333`
-
-## :beers: Como usar
+2. Mude o valor da env `DATABASE_URL` para versão local usando `localhost`
+3. Instale as dependencias `yarn install`
+4. Suba o banco de dados `docker-compose up db`
+5. Rode as migrations `npx prisma migrate dev`
+6. Suba a aplicação `yarn dev`
+7. A aplicação ficará disponivel em `http://localhost:3333`
 
 ## Requisitos
 
