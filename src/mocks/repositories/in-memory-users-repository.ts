@@ -1,12 +1,21 @@
 import { TUser, TUserCreateInput } from '@/lib/prisma'
 import { UsersRepository } from '@/repositories/users-repository'
+import { hashSync } from 'bcryptjs'
 
 export class InMemoryUsersRepository implements UsersRepository {
-  public user: TUser[] = []
+  public user: TUser[] = [
+    {
+      id: `uuid-${Math.random() * 100}`,
+      name: 'Kakashi Hatage',
+      email: 'kakashi@email.com',
+      created_at: new Date(),
+      password_hash: hashSync('kakashi', 5),
+    },
+  ]
 
   async create(data: TUserCreateInput) {
     const user: TUser = {
-      id: 'uuid-example',
+      id: `uuid-${Math.random() * 100}`,
       name: data.name,
       email: data.email,
       created_at: new Date(),

@@ -1,15 +1,20 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, beforeEach } from 'vitest'
 import bcryptjs from 'bcryptjs'
 import { RegisterUseCase } from './register'
 import { InMemoryUsersRepository } from '@/mocks/repositories/in-memory-users-repository'
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 
-describe('Use cases register', () => {
-  it('should be able to register success', async () => {
-    const userRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(userRepository)
+let userRepository: InMemoryUsersRepository
+let sut: RegisterUseCase
 
-    const user = await registerUseCase.execute({
+describe('Use cases register', () => {
+  beforeEach(() => {
+    userRepository = new InMemoryUsersRepository()
+    sut = new RegisterUseCase(userRepository)
+  })
+
+  it('should be able to register success', async () => {
+    const user = await sut.execute({
       name: 'naruto Uzumaki',
       email: 'naruto@email.com',
       password: 'naruto123',
@@ -19,17 +24,14 @@ describe('Use cases register', () => {
   })
 
   it('should not be able to register with same email', async () => {
-    const userRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(userRepository)
-
-    await registerUseCase.execute({
+    await sut.execute({
       name: 'naruto Uzumaki',
       email: 'naruto@email.com',
       password: 'naruto123',
     })
 
     await expect(
-      registerUseCase.execute({
+      sut.execute({
         name: 'naruto Uzumaki',
         email: 'naruto@email.com',
         password: 'naruto123',
@@ -38,10 +40,7 @@ describe('Use cases register', () => {
   })
 
   it('should be able to create a password hash', async () => {
-    const userRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(userRepository)
-
-    const user = await registerUseCase.execute({
+    const user = await sut.execute({
       name: 'naruto Uzumaki',
       email: 'naruto@email.com',
       password: 'naruto123',
