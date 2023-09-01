@@ -5,7 +5,7 @@ import { hashSync } from 'bcryptjs'
 export class InMemoryUsersRepository implements UsersRepository {
   public user: TUser[] = [
     {
-      id: `uuid-${Math.random() * 100}`,
+      id: 'uuid-01',
       name: 'Kakashi Hatage',
       email: 'kakashi@email.com',
       created_at: new Date(),
@@ -27,6 +27,16 @@ export class InMemoryUsersRepository implements UsersRepository {
 
   async findByEmail(email: string) {
     const user = this.user.find((item) => item.email === email)
+
+    if (!user) {
+      return null
+    }
+
+    return user
+  }
+
+  async findById(userId: string) {
+    const user = this.user.find((item) => item.id === userId)
 
     if (!user) {
       return null

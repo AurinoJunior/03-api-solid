@@ -7,6 +7,7 @@ import { env } from './env'
 import {
   UserAlreadyExistsError,
   InvalidCredentialsError,
+  ResourceNotFoundError,
 } from './use-cases/errors'
 
 export const app = fastify()
@@ -25,6 +26,10 @@ app.setErrorHandler((error, _request, reply) => {
 
   if (error instanceof InvalidCredentialsError) {
     return reply.status(401).send({ message: error.message })
+  }
+
+  if (error instanceof ResourceNotFoundError) {
+    return reply.status(403).send({ message: error.message })
   }
 
   if (env.NODE_ENV !== 'production') {
