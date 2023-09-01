@@ -1,9 +1,7 @@
 import { UsersRepository } from '@/repositories/users-repository'
-import bcryptjs from 'bcryptjs'
-import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 import { ResourceNotFoundError } from './errors'
 
-interface GetUserProfileUseCaseRequest {
+interface IGetUserProfileUseCaseRequest {
   userId: string
 }
 
@@ -14,7 +12,7 @@ export class GetUserProfileUseCase {
     this.userRepository = userRepository
   }
 
-  async execute({ userId }: GetUserProfileUseCaseRequest) {
+  async execute({ userId }: IGetUserProfileUseCaseRequest) {
     const user = await this.userRepository.findById(userId)
 
     if (!user) {
