@@ -1,5 +1,5 @@
-import { TCheckinCreateInput, TUserCreateInput, prisma } from '@/lib/prisma'
-import { CheckInRepository } from '../check-in-repository'
+import { TCheckinCreateInput, prisma } from '@/lib/prisma'
+import { CheckInRepository } from '../check-ins-repository'
 
 export class PrismaCheckInRepository implements CheckInRepository {
   async create(data: TCheckinCreateInput) {

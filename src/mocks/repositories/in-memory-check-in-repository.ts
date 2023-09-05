@@ -1,8 +1,26 @@
+import dayjs from 'dayjs'
 import { TCheckin, TCheckinCreateInput } from '@/lib/prisma'
-import { CheckInRepository } from '@/repositories/check-in-repository'
+import { CheckInRepository } from '@/repositories/check-ins-repository'
 
 export class InMemoryCheckInRepository implements CheckInRepository {
   public checkIns: TCheckin[] = []
+
+  async findByUserCheckInOnDate(userId: string, date: Date) {
+    const startOfTheDay = dayjs(date).startOf('date')
+    const endOfTheDay = dayjs(date).endOf('date')
+
+    const checkInOnSameDay = this.checkIns.find((item) => {
+      const checkInDate = dayjs(item.created_at)
+      const isOnSameDate =
+        checkInDate.isAfter(startOfTheDay) && checkInDate.isBefore(endOfTheDay)
+
+      return item.user_id === userId && isOnSameDate
+    })
+
+    if (!checkInOnSameDay) return null
+
+    return checkInOnSameDay
+  }
 
   async create(data: TCheckinCreateInput) {
     const checkIn: TCheckin = {

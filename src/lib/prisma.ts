@@ -1,5 +1,5 @@
 import { env } from '@/env'
-import { PrismaClient, Prisma, User, CheckIn } from '@prisma/client'
+import { PrismaClient, Prisma, User, CheckIn, Gym } from '@prisma/client'
 
 const prisma = new PrismaClient({
   log: env.NODE_ENV === 'dev' ? ['query'] : [],
@@ -11,4 +11,6 @@ type TUser = User
 type TCheckinCreateInput = Prisma.CheckInUncheckedCreateInput
 type TCheckin = CheckIn
 
-export { prisma, TUserCreateInput, TUser, TCheckinCreateInput, TCheckin }
+type TGym = Gym
+
+export { prisma, TUserCreateInput, TUser, TCheckinCreateInput, TCheckin, TGym }

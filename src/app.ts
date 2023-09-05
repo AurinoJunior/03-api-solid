@@ -29,7 +29,7 @@ app.setErrorHandler((error, _request, reply) => {
   }
 
   if (error instanceof ResourceNotFoundError) {
-    return reply.status(403).send({ message: error.message })
+    return reply.status(404).send({ message: error.message })
   }
 
   if (env.NODE_ENV !== 'production') {
