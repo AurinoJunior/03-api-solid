@@ -24,6 +24,8 @@ describe('Use case check-in', () => {
     const { checkIn } = await sut.execute({
       userId: 'uuid-01',
       gymId: 'gym-001',
+      userLatitude: -23.530257,
+      userLongitude: -46.53211,
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
@@ -32,21 +34,49 @@ describe('Use case check-in', () => {
   it('should not be able to check in twice in the same day', async () => {
     vi.setSystemTime(new Date(2023, 0, 20, 8)) // 2023-1-20 11h
 
-    await sut.execute({ userId: 'uuid-01', gymId: 'gym-001' })
+    await sut.execute({
+      userId: 'uuid-01',
+      gymId: 'gym-001',
+      userLatitude: -23.530257,
+      userLongitude: -46.53211,
+    })
 
     await expect(
-      sut.execute({ userId: 'uuid-01', gymId: 'gym-001' }),
+      sut.execute({
+        userId: 'uuid-01',
+        gymId: 'gym-001',
+        userLatitude: -23.530257,
+        userLongitude: -46.53211,
+      }),
     ).rejects.toBeInstanceOf(Error)
   })
 
   it('should be able to check in on different day', async () => {
     vi.setSystemTime(new Date(2023, 0, 20, 8)) // 2023-1-20 11h
-    await sut.execute({ userId: 'uuid-01', gymId: 'gym-001' })
+    await sut.execute({
+      userId: 'uuid-01',
+      gymId: 'gym-001',
+      userLatitude: -23.530257,
+      userLongitude: -46.53211,
+    })
 
     vi.setSystemTime(new Date(2023, 1, 20, 8)) // 2023-2-20 11h
     const { checkIn } = await sut.execute({
       userId: 'uuid-01',
       gymId: 'gym-001',
+      userLatitude: -23.530257,
+      userLongitude: -46.53211,
+    })
+
+    expect(checkIn.id).toEqual(expect.any(String))
+  })
+
+  it('should not be able to check in on distant gym', async () => {
+    const { checkIn } = await sut.execute({
+      userId: 'uuid-01',
+      gymId: 'gym-001',
+      userLatitude: -23.530257,
+      userLongitude: -46.53211,
     })
 
     expect(checkIn.id).toEqual(expect.any(String))

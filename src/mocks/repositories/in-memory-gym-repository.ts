@@ -9,8 +9,8 @@ export class InMemoryGymRepository implements GymsRepository {
       title: 'Konoha Gym',
       description: 'Academia ninja de konoha',
       phone: '',
-      latitude: new Decimal(0),
-      longitude: new Decimal(0),
+      latitude: new Decimal(-23.530222),
+      longitude: new Decimal(-46.532877),
     },
   ]
 
