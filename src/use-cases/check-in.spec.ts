@@ -2,6 +2,7 @@ import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest'
 import { InMemoryCheckInRepository } from '@/mocks/repositories/in-memory-check-in-repository'
 import { InMemoryGymRepository } from '@/mocks/repositories/in-memory-gym-repository'
 import { CheckInUseCase } from './check-in'
+import { ResourceNotFoundError } from './errors'
 
 let checkInRepository: InMemoryCheckInRepository
 let gymRepository: InMemoryGymRepository
@@ -80,5 +81,16 @@ describe('Use case check-in', () => {
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
+  })
+
+  it('should not be able to check in if not found the gym', async () => {
+    await expect(
+      sut.execute({
+        userId: 'uuid-01',
+        gymId: 'xpto',
+        userLatitude: -23.530257,
+        userLongitude: -46.53211,
+      }),
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })
