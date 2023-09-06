@@ -11,6 +11,15 @@ type TUser = User
 type TCheckinCreateInput = Prisma.CheckInUncheckedCreateInput
 type TCheckin = CheckIn
 
+type TGymCreateInput = Prisma.GymCreateInput
 type TGym = Gym
 
-export { prisma, TUserCreateInput, TUser, TCheckinCreateInput, TCheckin, TGym }
+export {
+  prisma,
+  TUserCreateInput,
+  TUser,
+  TCheckinCreateInput,
+  TCheckin,
+  TGym,
+  TGymCreateInput,
+}
