@@ -1,6 +1,10 @@
 import { TGym, TGymCreateInput } from '@/lib/prisma'
 import { Decimal } from '@prisma/client/runtime/library'
-import { GymsRepository } from '@/repositories/gyms-repository'
+import {
+  GymsRepository,
+  IFindManyNearbyGyms,
+} from '@/repositories/gyms-repository'
+import { getDistanceBetweenCoordinates } from '@/utils/get-distance-between-coordinates'
 
 export class InMemoryGymRepository implements GymsRepository {
   public gyms: TGym[] = [
@@ -43,5 +47,22 @@ export class InMemoryGymRepository implements GymsRepository {
       .slice((page - 1) * 20, page * 20)
 
     return gyms
+  }
+
+  async findManyNearbyGyms(params: IFindManyNearbyGyms) {
+    return this.gyms.filter((gym) => {
+      const distance = getDistanceBetweenCoordinates(
+        {
+          latitude: params.latitude,
+          longitude: params.longitude,
+        },
+        {
+          latitude: Number(gym.latitude),
+          longitude: Number(gym.longitude),
+        },
+      )
+
+      return distance < 10
+    })
   }
 }
