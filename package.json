@@ -13,6 +13,7 @@
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.cjs",
     "build": "tsup src --out-dir build",
+    "lint": "eslint --max-warnings=0 --fix src && prettier --write src",
     "bump": "yarn upgrade-interactive",
     "test": "vitest run",
     "test:watch": "vitest"
