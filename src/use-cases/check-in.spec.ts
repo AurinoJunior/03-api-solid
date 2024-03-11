@@ -26,7 +26,7 @@ describe('Use case check-in', () => {
       userId: 'uuid-01',
       gymId: 'gym-001',
       userLatitude: -23.530257,
-      userLongitude: -46.53211,
+      userLongitude: -46.53211
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
@@ -39,7 +39,7 @@ describe('Use case check-in', () => {
       userId: 'uuid-01',
       gymId: 'gym-001',
       userLatitude: -23.530257,
-      userLongitude: -46.53211,
+      userLongitude: -46.53211
     })
 
     await expect(
@@ -47,8 +47,8 @@ describe('Use case check-in', () => {
         userId: 'uuid-01',
         gymId: 'gym-001',
         userLatitude: -23.530257,
-        userLongitude: -46.53211,
-      }),
+        userLongitude: -46.53211
+      })
     ).rejects.toBeInstanceOf(Error)
   })
 
@@ -58,7 +58,7 @@ describe('Use case check-in', () => {
       userId: 'uuid-01',
       gymId: 'gym-001',
       userLatitude: -23.530257,
-      userLongitude: -46.53211,
+      userLongitude: -46.53211
     })
 
     vi.setSystemTime(new Date(2023, 1, 20, 8)) // 2023-2-20 11h
@@ -66,7 +66,7 @@ describe('Use case check-in', () => {
       userId: 'uuid-01',
       gymId: 'gym-001',
       userLatitude: -23.530257,
-      userLongitude: -46.53211,
+      userLongitude: -46.53211
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
@@ -77,7 +77,7 @@ describe('Use case check-in', () => {
       userId: 'uuid-01',
       gymId: 'gym-001',
       userLatitude: -23.530257,
-      userLongitude: -46.53211,
+      userLongitude: -46.53211
     })
 
     expect(checkIn.id).toEqual(expect.any(String))
@@ -89,8 +89,8 @@ describe('Use case check-in', () => {
         userId: 'uuid-01',
         gymId: 'xpto',
         userLatitude: -23.530257,
-        userLongitude: -46.53211,
-      }),
+        userLongitude: -46.53211
+      })
     ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

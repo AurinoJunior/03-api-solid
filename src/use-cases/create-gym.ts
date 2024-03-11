@@ -20,14 +20,14 @@ export class CreateGymUseCase {
     phone,
     description,
     latitude,
-    longitude,
+    longitude
   }: ICreateGymUseCaseParams) {
     const gym = await this.gymRepository.create({
       title,
       phone,
       description,
       latitude,
-      longitude,
+      longitude
     })
 
     return gym

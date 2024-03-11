@@ -14,11 +14,11 @@ export class GetAllNearbyGymsUseCase {
 
   async execute({
     userLatitude,
-    userLongitude,
+    userLongitude
   }: IGetAllNearbyGymsUseCaseParams) {
     const gyms = await this.gymRepository.findManyNearbyGyms({
       latitude: userLatitude,
-      longitude: userLongitude,
+      longitude: userLongitude
     })
 
     return gyms

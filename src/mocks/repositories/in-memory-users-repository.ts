@@ -9,8 +9,8 @@ export class InMemoryUsersRepository implements UsersRepository {
       name: 'Kakashi Hatage',
       email: 'kakashi@email.com',
       created_at: new Date(),
-      password_hash: hashSync('kakashi', 5),
-    },
+      password_hash: hashSync('kakashi', 5)
+    }
   ]
 
   async create(data: TUserCreateInput) {
@@ -19,7 +19,7 @@ export class InMemoryUsersRepository implements UsersRepository {
       name: data.name,
       email: data.email,
       created_at: new Date(),
-      password_hash: data.password_hash,
+      password_hash: data.password_hash
     }
     this.user.push(user)
     return user

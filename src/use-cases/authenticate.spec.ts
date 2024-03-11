@@ -15,7 +15,7 @@ describe('Use cases authenticate', () => {
   it('should be able to authenticate', async () => {
     const user = await sut.execute({
       email: 'kakashi@email.com',
-      password: 'kakashi',
+      password: 'kakashi'
     })
 
     expect(user.id).toEqual(expect.any(String))
@@ -25,8 +25,8 @@ describe('Use cases authenticate', () => {
     await expect(
       sut.execute({
         email: '',
-        password: 'kakashi',
-      }),
+        password: 'kakashi'
+      })
     ).rejects.toBeInstanceOf(InvalidCredentialsError)
   })
 
@@ -34,8 +34,8 @@ describe('Use cases authenticate', () => {
     await expect(
       sut.execute({
         email: 'kakashi@email.com',
-        password: '',
-      }),
+        password: ''
+      })
     ).rejects.toBeInstanceOf(InvalidCredentialsError)
   })
 })

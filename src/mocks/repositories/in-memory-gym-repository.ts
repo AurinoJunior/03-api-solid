@@ -2,7 +2,7 @@ import { TGym, TGymCreateInput } from '@/lib/prisma'
 import { Decimal } from '@prisma/client/runtime/library'
 import {
   GymsRepository,
-  IFindManyNearbyGyms,
+  IFindManyNearbyGyms
 } from '@/repositories/gyms-repository'
 import { getDistanceBetweenCoordinates } from '@/utils/get-distance-between-coordinates'
 
@@ -14,8 +14,8 @@ export class InMemoryGymRepository implements GymsRepository {
       description: 'Academia ninja de konoha',
       phone: '',
       latitude: new Decimal(-23.530222),
-      longitude: new Decimal(-46.532877),
-    },
+      longitude: new Decimal(-46.532877)
+    }
   ]
 
   async create(data: TGymCreateInput) {
@@ -25,7 +25,7 @@ export class InMemoryGymRepository implements GymsRepository {
       description: data.description ?? null,
       phone: data.phone ?? null,
       latitude: new Decimal(Number(data.latitude)),
-      longitude: new Decimal(Number(data.longitude)),
+      longitude: new Decimal(Number(data.longitude))
     }
     this.gyms.push(newGym)
     return newGym
@@ -54,12 +54,12 @@ export class InMemoryGymRepository implements GymsRepository {
       const distance = getDistanceBetweenCoordinates(
         {
           latitude: params.latitude,
-          longitude: params.longitude,
+          longitude: params.longitude
         },
         {
           latitude: Number(gym.latitude),
-          longitude: Number(gym.longitude),
-        },
+          longitude: Number(gym.longitude)
+        }
       )
 
       return distance < 10

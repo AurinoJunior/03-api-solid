@@ -14,7 +14,7 @@ describe('Use cases search gyms', () => {
   it('should be able to search gyms', async () => {
     const gyms = await sut.execute({
       query: 'Konoha',
-      page: 1,
+      page: 1
     })
 
     expect(gyms).toHaveLength(1)
@@ -27,13 +27,13 @@ describe('Use cases search gyms', () => {
         description: null,
         phone: null,
         latitude: -23.530257,
-        longitude: -46.53211,
+        longitude: -46.53211
       })
     }
 
     const gyms = await sut.execute({
       query: 'Konoha',
-      page: 2,
+      page: 2
     })
 
     expect(gyms).toHaveLength(3)

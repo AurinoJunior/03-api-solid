@@ -46,7 +46,7 @@ export class InMemoryCheckInRepository implements CheckInRepository {
       created_at: new Date(),
       user_id: data.user_id,
       gym_id: data.gym_id,
-      validated_at: data.validated_at ? new Date(data.validated_at) : null,
+      validated_at: data.validated_at ? new Date(data.validated_at) : null
     }
 
     this.checkIns.push(checkIn)
@@ -55,7 +55,7 @@ export class InMemoryCheckInRepository implements CheckInRepository {
 
   async save(checkIn: TCheckin) {
     const checkInIndex = this.checkIns.findIndex(
-      (item) => item.id === checkIn.id,
+      (item) => item.id === checkIn.id
     )
 
     if (checkInIndex >= 0) {

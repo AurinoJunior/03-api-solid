@@ -14,22 +14,22 @@ describe('Use case get all check ins history', () => {
   it('should be able to get all history check ins', async () => {
     await checkInRepository.create({
       user_id: 'uuid-01',
-      gym_id: 'gym-001',
+      gym_id: 'gym-001'
     })
 
     await checkInRepository.create({
       user_id: 'uuid-01',
-      gym_id: 'gym-002',
+      gym_id: 'gym-002'
     })
 
     const { checkIns } = await sut.execute({
-      userId: 'uuid-01',
+      userId: 'uuid-01'
     })
 
     expect(checkIns).toHaveLength(2)
     expect(checkIns).toEqual([
       expect.objectContaining({ gym_id: 'gym-001' }),
-      expect.objectContaining({ gym_id: 'gym-002' }),
+      expect.objectContaining({ gym_id: 'gym-002' })
     ])
   })
 
@@ -37,13 +37,13 @@ describe('Use case get all check ins history', () => {
     for (let i = 1; i <= 25; i++) {
       await checkInRepository.create({
         user_id: 'uuid-01',
-        gym_id: `gym-00${i}`,
+        gym_id: `gym-00${i}`
       })
     }
 
     const { checkIns } = await sut.execute({
       userId: 'uuid-01',
-      page: 2,
+      page: 2
     })
 
     expect(checkIns).toHaveLength(5)

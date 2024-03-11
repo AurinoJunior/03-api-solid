@@ -16,7 +16,7 @@ export class CheckInUseCase {
 
   constructor(
     checkInRepository: CheckInRepository,
-    gymRepository: GymsRepository,
+    gymRepository: GymsRepository
   ) {
     this.checkInRepository = checkInRepository
     this.gymRepository = gymRepository
@@ -26,7 +26,7 @@ export class CheckInUseCase {
     gymId,
     userId,
     userLatitude,
-    userLongitude,
+    userLongitude
   }: ICheckInUseCaseParams) {
     const gym = await this.gymRepository.findById(gymId)
 
@@ -35,12 +35,12 @@ export class CheckInUseCase {
     const distance = getDistanceBetweenCoordinates(
       {
         latitude: userLatitude,
-        longitude: userLongitude,
+        longitude: userLongitude
       },
       {
         latitude: Number(gym.latitude),
-        longitude: Number(gym.longitude),
-      },
+        longitude: Number(gym.longitude)
+      }
     )
 
     const MAX_DISTANCE_IN_KILOMETE = 0.1
@@ -54,7 +54,7 @@ export class CheckInUseCase {
 
     const checkIn = await this.checkInRepository.create({
       user_id: userId,
-      gym_id: gymId,
+      gym_id: gymId
     })
 
     return { checkIn }

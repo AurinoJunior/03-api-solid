@@ -7,7 +7,7 @@ import { env } from './env'
 import {
   UserAlreadyExistsError,
   InvalidCredentialsError,
-  ResourceNotFoundError,
+  ResourceNotFoundError
 } from './use-cases/errors'
 
 export const app = fastify()

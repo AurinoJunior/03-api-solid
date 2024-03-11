@@ -21,7 +21,7 @@ export class ValidateCheckInUseCase {
 
     const distanceInMinutesFromCheckInCreation = dayjs(new Date()).diff(
       checkIn.created_at,
-      'minutes',
+      'minutes'
     )
 
     const MAX_MINUTES = 20
@@ -34,7 +34,7 @@ export class ValidateCheckInUseCase {
     await this.checkInRepository.save(checkIn)
 
     return {
-      checkIn,
+      checkIn
     }
   }
 }

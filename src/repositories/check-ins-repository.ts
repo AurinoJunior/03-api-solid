@@ -8,6 +8,6 @@ export interface CheckInRepository {
   findManyByUserId: (userId: string, page: number) => Promise<TCheckin[]>
   findByUserCheckInOnDate: (
     userId: string,
-    date: Date,
+    date: Date
   ) => Promise<TCheckin | null>
 }

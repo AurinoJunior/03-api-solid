@@ -14,16 +14,16 @@ describe('Use case get user metrics', () => {
   it('should be able to get count total check ins', async () => {
     await checkInRepository.create({
       user_id: 'uuid-01',
-      gym_id: 'gym-001',
+      gym_id: 'gym-001'
     })
 
     await checkInRepository.create({
       user_id: 'uuid-01',
-      gym_id: 'gym-002',
+      gym_id: 'gym-002'
     })
 
     const { checkInsCount } = await sut.execute({
-      userId: 'uuid-01',
+      userId: 'uuid-01'
     })
 
     expect(checkInsCount).toBe(2)

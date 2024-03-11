@@ -17,12 +17,12 @@ describe('Use cases get all nearby gyms', () => {
       description: null,
       phone: null,
       latitude: -23.326838,
-      longitude: -46.720605,
+      longitude: -46.720605
     })
 
     const gyms = await sut.execute({
       userLatitude: -23.530222,
-      userLongitude: -46.532877,
+      userLongitude: -46.532877
     })
 
     expect(gyms).toHaveLength(1)

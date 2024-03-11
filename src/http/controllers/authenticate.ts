@@ -5,11 +5,11 @@ import { makeAuthenticateUseCase } from '@/use-cases/factories/make-authenticate
 
 export async function authenticate(
   request: FastifyRequest,
-  reply: FastifyReply,
+  reply: FastifyReply
 ) {
   const authenticateBodySchema = z.object({
     email: z.string().email(),
-    password: z.string().min(6),
+    password: z.string().min(6)
   })
 
   const { email, password } = authenticateBodySchema.parse(request.body)
@@ -18,7 +18,7 @@ export async function authenticate(
 
   await authenticateUseCase.execute({
     email,
-    password,
+    password
   })
 
   return reply.status(200).send()

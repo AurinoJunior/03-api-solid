@@ -23,7 +23,7 @@ export class AuthenticateUseCase {
 
     const doesPasswordMatches = await bcryptjs.compare(
       password,
-      user.password_hash,
+      user.password_hash
     )
 
     if (!doesPasswordMatches) {

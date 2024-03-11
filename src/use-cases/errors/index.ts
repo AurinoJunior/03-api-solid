@@ -5,5 +5,5 @@ import { ResourceNotFoundError } from './resource-not-found-error'
 export {
   UserAlreadyExistsError,
   InvalidCredentialsError,
-  ResourceNotFoundError,
+  ResourceNotFoundError
 }

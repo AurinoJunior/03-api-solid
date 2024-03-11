@@ -17,7 +17,7 @@ describe('Use cases register', () => {
     const user = await sut.execute({
       name: 'naruto Uzumaki',
       email: 'naruto@email.com',
-      password: 'naruto123',
+      password: 'naruto123'
     })
 
     expect(user.id).toEqual(expect.any(String))
@@ -27,15 +27,15 @@ describe('Use cases register', () => {
     await sut.execute({
       name: 'naruto Uzumaki',
       email: 'naruto@email.com',
-      password: 'naruto123',
+      password: 'naruto123'
     })
 
     await expect(
       sut.execute({
         name: 'naruto Uzumaki',
         email: 'naruto@email.com',
-        password: 'naruto123',
-      }),
+        password: 'naruto123'
+      })
     ).rejects.toBeInstanceOf(UserAlreadyExistsError)
   })
 
@@ -43,7 +43,7 @@ describe('Use cases register', () => {
     const user = await sut.execute({
       name: 'naruto Uzumaki',
       email: 'naruto@email.com',
-      password: 'naruto123',
+      password: 'naruto123'
     })
 
     expect(await bcryptjs.compare('naruto123', user.password_hash)).toBe(true)

@@ -2,7 +2,7 @@ import { env } from '@/env'
 import { PrismaClient, Prisma, User, CheckIn, Gym } from '@prisma/client'
 
 const prisma = new PrismaClient({
-  log: env.NODE_ENV === 'dev' ? ['query'] : [],
+  log: env.NODE_ENV === 'dev' ? ['query'] : []
 })
 
 type TUserCreateInput = Prisma.UserCreateInput
@@ -21,5 +21,5 @@ export {
   TCheckinCreateInput,
   TCheckin,
   TGym,
-  TGymCreateInput,
+  TGymCreateInput
 }
